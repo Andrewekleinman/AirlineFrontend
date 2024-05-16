@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    padding:0px
+  }
+    
+  .column {
+    float: left;
+
+    padding-right: 60px;
+  }
+  .column2 {
+    float: left;
+
+    padding: 0px;
+  }
+  .rightjustify {
+    float: right;
+
+    padding: 0px;
+  }

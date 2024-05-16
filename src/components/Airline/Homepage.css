@@ -1,0 +1,14 @@
+label,input,button{
+    margin:10px;
+    padding:5px;
+    text-align: center;
+}
+.App{
+    text-align: center;
+}
+footer{
+    bottom:0;
+    position:absolute;
+    width: 90%;
+    height: 15%;
+}
