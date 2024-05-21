@@ -27,8 +27,8 @@ export default function App(){
                         <Route path='/welcome' element={<AuthenticatedRoute><WelcomeComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/additional/:id' element={<AuthenticatedRoute><UpdateComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/logout' element={<LogoutComponent/>}></Route>
-                        <Route path='/home' element={<PickFlight/>}></Route>
-                        <Route path='/search' element={<SearchFlights/>}></Route>
+                        <Route path='/home' element={<AuthenticatedRoute><PickFlight/></AuthenticatedRoute>}></Route>
+                        <Route path='/search' element={<AuthenticatedRoute><SearchFlights/></AuthenticatedRoute>}></Route>
                         <Route path='/*' element={<ErrorComponent/>}></Route>
                     </Routes>
                 </BrowserRouter>
