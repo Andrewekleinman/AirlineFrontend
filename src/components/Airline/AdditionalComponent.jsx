@@ -9,10 +9,9 @@ export default function AdditionalComponent(){
     const [todos, setTodos] = useState([]);
     const [message, setMessage] = useState([]);
     const navigate = useNavigate()
-    const username = useAuth().username
 
     function refreshTodos(){
-    retrieveTodoUsername(`${username}`)
+    retrieveTodoUsername(`${useAuth.username}`)
         .then(response => {
             setTodos(response.data)
         })

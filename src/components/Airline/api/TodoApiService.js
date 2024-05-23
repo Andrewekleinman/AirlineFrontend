@@ -2,6 +2,7 @@
 import { useAuth } from "../security/AuthContext"
 import { apiClient } from "./ApiClient"
 
+const flightSearch = useAuth.flightSearch
 const username = useAuth.username
 export function retrieveTodoUsername(username){
     return apiClient.get(`/users/${username}/todos`)
