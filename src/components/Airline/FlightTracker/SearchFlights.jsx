@@ -6,6 +6,7 @@ import { useAuth } from '../security/AuthContext';
 
 export default function SearchFlights(){
     const [flights, setFlights] = useState([]);
+    const username = useAuth().username;
     const navigate = useNavigate();
     const auth = useAuth().flightSearch;
     
@@ -57,7 +58,7 @@ export default function SearchFlights(){
                     )}    
             </tbody>
         </table>
-        <div className='btn btn-success m-3' onClick={() => createElement()}>Add new</div>
+        {username == 'testusername' && <div className='btn btn-success m-3' onClick={() => createElement()}>Add new</div>}
     </div>
     )
 }
