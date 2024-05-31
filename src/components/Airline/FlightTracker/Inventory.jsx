@@ -30,11 +30,11 @@ export default function Inventory(){
             {bookings.map(
                         element => (
                             <tr key={element.id}>
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.depart}</td>}
-                               {element.flightsRemaining>=auth.Passengers&& <td>{element.arrive}</td>}
-                               {element.flightsRemaining>=auth.Passengers&&<td>{element.departDate.toString()}</td>}
+                                <td>{element.depart}</td>
+                               <td>{element.arrive}</td>
+                               <td>{element.departDate.toString()}</td>
                                 {/* <td>{element.returnDate.toString()}</td> */}
-                                {element.flightsRemaining>=auth.Passengers&& <td>{element.flightsRemaining}</td>}
+                                <td>{element.passengers}</td>
                                 {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
                                 {/* {element.flightsRemaining>=auth.Passengers&& element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>} */}
                                 

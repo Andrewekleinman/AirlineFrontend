@@ -9,5 +9,11 @@ export function retrieveBookings(username, bookingType){
 export function createBooking(booking){
     console.log(booking)
     return apiClient.post(`/bookings`, booking)
- 
  }
+ export function purchase(username){
+    return apiClient.put(`/purchase/${username}`)
+ }
+ export function deleteBooking(bookingId){
+    // console.log(username,id)
+    return apiClient.delete(`/bookings/${bookingId}`)
+}

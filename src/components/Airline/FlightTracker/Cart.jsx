@@ -2,11 +2,15 @@
 import { retrieveBookings } from '../api/BookingApiService';
 import { useAuth } from '../security/AuthContext';
 import { useEffect, useState } from 'react'
+import {useParams,useNavigate} from 'react-router-dom'
+import { deleteBooking } from '../api/BookingApiService';
+
 
 export default function Cart(){
     const auth = useAuth();
     const [bookings, setBookings] = useState([]);
-
+    const navigate = useNavigate()
+    const refresh = useEffect ( () => refreshCart,[] )
 
     function refreshCart(){
         retrieveBookings(auth.username, "Cart")
@@ -15,7 +19,14 @@ export default function Cart(){
             })
     }
     useEffect ( () => refreshCart,[] )
-    
+
+    function purchase(){
+        navigate(`/payment`)
+    }
+    async function deleteElement(bookingId){
+        await deleteBooking(bookingId);
+        refreshCart()
+    }
     return(
     <div>Items in your Cart
     <table className='center'>
@@ -30,20 +41,21 @@ export default function Cart(){
             
             {bookings.map(
                         element => (
-                            <tr key={element.id}>
+                            <tr key={element.bookingId}>
                                 <td>{element.depart}</td>
                                <td>{element.arrive}</td>
                                <td>{element.departDate.toString()}</td>
                                 {/* <td>{element.returnDate.toString()}</td> */}
                                 <td>{element.passengers}</td>
-                                {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
-                                {/* {element.flightsRemaining>=auth.Passengers&& element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>} */}
+                                <td><button className='btn btn-warning' onClick={() => deleteElement(element.bookingId)}>delete</button></td>
+                                
                                 
                             </tr>
                         )
                     )} 
                     </tbody>
                     </table>
+                    <button className='btn btn-success' onClick={() => purchase()}>Purchase flights</button>
                     </div>
 )
 }

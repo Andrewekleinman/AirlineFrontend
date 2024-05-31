@@ -15,6 +15,7 @@ import SearchFlights from './FlightTracker/SearchFlights'
 import UpdateFlights from './FlightTracker/UpdateFlights'
 import Cart from'./FlightTracker/Cart'
 import Inventory from'./FlightTracker/Inventory'
+import Payment from'./FlightTracker/Payment'
 
 export default function App(){
     return(
@@ -27,6 +28,7 @@ export default function App(){
                         <Route path='/login' element={<LoginComponent/>}></Route>
                         <Route path='/additional' element={<AuthenticatedRoute><AdditionalComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/cart' element={<AuthenticatedRoute><Cart/></AuthenticatedRoute>}></Route>
+                        <Route path='/payment' element={<AuthenticatedRoute><Payment/></AuthenticatedRoute>}></Route>
                         <Route path='/inventory' element={<AuthenticatedRoute><Inventory/></AuthenticatedRoute>}></Route>
                         <Route path='/welcome' element={<AuthenticatedRoute><WelcomeComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/additional/:id' element={<AuthenticatedRoute><UpdateComponent/></AuthenticatedRoute>}></Route>
