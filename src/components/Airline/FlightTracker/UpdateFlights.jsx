@@ -31,19 +31,20 @@ export default function UpdateFlights(){
         }
     }
 
+
     function onSubmit(values){
         const flight={depart: values.depart, arrive: values.arrive, departDate: values.departDate,returnDate: null}
         if(id == -1){
             createFlight(flight).then(response=>{
                 console.log(flight)
                 console.log(response)
-                navigate(`/flights`)
+                navigate(`/home`)
             })
         }
         else{
         alterFlight(id, flight).then(response =>{
             console.log(response)
-            navigate(`/flights`)
+            navigate(`/home`)
         })
     }
      

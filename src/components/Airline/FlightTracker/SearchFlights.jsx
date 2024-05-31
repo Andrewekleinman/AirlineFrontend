@@ -12,9 +12,9 @@ export default function SearchFlights(){
     
     function refreshFlights(){
         retrieveFlights(auth.Depart, auth.Arrive, auth.DepartDate, auth.ReturnDate)
-            // .then(response => {
-            //     setFlights(response.data)
-            // })
+            .then(response => {
+                setFlights(response.data)
+            })
         }
         useEffect ( () => refreshFlights,[] )
 
@@ -27,7 +27,7 @@ export default function SearchFlights(){
             .catch(()=>console.log(`Tried to delete ${useAuth.username}, ${id} but failed`))
     }
     function updateElement(id){       
-        navigate(`/additional/${id}`)
+        navigate(`/flights/${id}`)
     }
     function createElement(){
         navigate(`/flights/-1`)
@@ -40,19 +40,20 @@ export default function SearchFlights(){
             <tr>
                 <th>Departure</th>
                 <th>Arrival</th>
-                <td>Number of stops</td>
-                <td>duration</td>
+                <td>Date</td>
+                {/* <td>Seats</td> */}
             </tr>
             
             {flights.map(
                         element => (
-                            <tr key={element.depart}>
+                            <tr key={element.id}>
+                                <td>{element.depart}</td>
                                 <td>{element.arrive}</td>
                                 <td>{element.departDate.toString()}</td>
-                                <td>{element.arriveDate.toString()}</td>
-                                <td>{element.seats.length}</td>
+                                {/* <td>{element.returnDate.toString()}</td> */}
+                                <td>{element.flightsRemaining}</td>
                                 <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td>
-                                <td><button className='btn btn-success' onClick={() => updateElement(element.id)}>update</button></td>
+                                <td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>
                             </tr>
                         )
                     )}    
