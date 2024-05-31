@@ -15,6 +15,7 @@ export default function AuthProvider({children}){
     const [flightSearch,setFlightSearch] = useState(null)
 
 
+
     setInterval( ()=> setNumber(number+1),10000)
     const sharedValue = {number, isAuthenticated, login, logout, username, token, flightSearch,setFlightSearch}
 

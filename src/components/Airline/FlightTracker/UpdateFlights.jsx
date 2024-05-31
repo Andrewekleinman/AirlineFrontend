@@ -1,7 +1,7 @@
 import {useParams,useNavigate} from 'react-router-dom'
 import { alterFlight, createFlight, retrieveFlight } from '../api/FlightApiService'
 import { useEffect,useState } from 'react'
-import { Formik,Form,Field, ErrorMessage } from 'formik'
+import { Formik,Form,Field, ErrorMessage} from 'formik'
 import { useAuth } from '../security/AuthContext'
 import moment from 'moment'
 
@@ -9,8 +9,9 @@ export default function UpdateFlights(){
     const {id} = useParams()
     const [depart,setDepart] = useState("")
     const [departDate,setDepartDate] = useState('')
+    const [flightsRemaining,setFlightsRemaining] = useState('')
     const [arrive,setArrive] = useState('')
-    const username = useAuth().username
+    const auth = useAuth().flightSearch;
     const navigate = useNavigate()
 
     useEffect(
@@ -26,14 +27,18 @@ export default function UpdateFlights(){
                     setDepart(response.data.depart)
                     setArrive(response.data.arrive)
                     setDepartDate(response.data.departDate)
+                    setFlightsRemaining(response.data.flightsRemaining)
                 }
+
             )
         }
     }
 
-
+    function goBack(){
+        navigate('/search')
+    }
     function onSubmit(values){
-        const flight={depart: values.depart, arrive: values.arrive, departDate: values.departDate,returnDate: null}
+        const flight={depart: values.depart, arrive: values.arrive, departDate: values.departDate,returnDate: null, flightsRemaining:values.flightsRemaining}
         if(id == -1){
             createFlight(flight).then(response=>{
                 console.log(flight)
@@ -42,9 +47,10 @@ export default function UpdateFlights(){
             })
         }
         else{
+            flight.flightsRemaining -= auth.Passengers
         alterFlight(id, flight).then(response =>{
             console.log(response)
-            navigate(`/home`)
+            navigate(`/search`)
         })
     }
      
@@ -60,9 +66,9 @@ export default function UpdateFlights(){
 
     return(
         <div className="container">
-            <h1>Enter details</h1>
-            <div>
-                <Formik initialValues={{depart,arrive,departDate}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
+            {id==-1 && <h1>Enter details</h1>}
+            {id == -1 &&<div>
+                <Formik initialValues={{depart,arrive,departDate,flightsRemaining}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
                 {
                     (props) => (
                         <Form>
@@ -80,6 +86,10 @@ export default function UpdateFlights(){
                                 <label>Departure Date</label>
                                 <Field type="date" className="form-control" name="departDate" />
                             </fieldset>
+                            <fieldset className='form-group'>
+                                <label>Flights Remaining</label>
+                                <Field type="number" className="form-control" name="flightsRemaining" />
+                            </fieldset>
                             <div>
                                 <button className='btn btn-success m-5' type='submit'>Save</button>
                             </div>
@@ -87,7 +97,19 @@ export default function UpdateFlights(){
                     )
                 }
                 </Formik>
-            </div>
+            </div>}
+            {id!=-1&&<div><span>Continue booking flight {id} for {auth.Passengers}</span> {auth.passengers==1&&<span> passengers?</span>}{auth.passengers!=1&&<span> passenger?</span>}<div>
+                <Formik initialValues={{depart,arrive,departDate,flightsRemaining}} enableReinitialize = {true} onSubmit={onSubmit}>
+                <div>
+                    <Form>
+                        <div>
+                            <button className='btn btn-warning m-5' onClick={() => goBack()}>Cancel</button>
+                            <button className='btn btn-success m-5' type='submit'>Continue</button>
+                        </div>
+                    </Form>
+                           
+                </div>
+                </Formik></div></div>}
         </div>
     )
 }

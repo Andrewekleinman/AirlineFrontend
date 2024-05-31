@@ -14,7 +14,8 @@ export default function PickFlight(){
     const auth = useAuth()
 
     function onSubmit(values){
-        const flightSearch={Depart:values.Depart,Arrive:values.Arrive,Passengers:values.Passengers,DepartDate:values.DepartDate,ReturnDate:values.ReturnDate}
+        const flightSearch={Depart:values.Depart,Arrive:values.Arrive,Passengers:values.Passengers,
+            DepartDate:values.DepartDate,ReturnDate:values.ReturnDate, roundTrip:values.yes}
         auth.setFlightSearch(flightSearch)
             
         navigate(`/search`)

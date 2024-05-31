@@ -1,0 +1,13 @@
+label,input,button{
+    margin:10px;
+    padding:5px;
+    text-align: center;
+}
+.informative{
+    text-align: center;
+    font-size: 40px;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}

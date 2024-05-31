@@ -3,9 +3,9 @@ import { useAuth, flightSearch} from "../security/AuthContext"
 import { apiClient } from "./ApiClient"
 
 const username = useAuth.username
-export function retrieveFlights(depart, arrive, departDate, returnDate){
-    console.log(depart, arrive, departDate.toString(),returnDate.toString());
-    return apiClient.get(`/flights/${depart}/${arrive}/${departDate}/${returnDate}/test`)
+export function retrieveFlights(depart, arrive, departDate){
+    console.log(depart, arrive, departDate.toString());
+    return apiClient.get(`/flights/${depart}/${arrive}/${departDate}/test`)
 }
 export function deleteFlight(id){
     // console.log(username,id)
