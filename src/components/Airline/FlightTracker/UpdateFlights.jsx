@@ -98,7 +98,7 @@ export default function UpdateFlights(){
                 }
                 </Formik>
             </div>}
-            {id!=-1&&<div><span>Continue booking flight {id} for {auth.Passengers}</span> {auth.passengers==1&&<span> passengers?</span>}{auth.passengers!=1&&<span> passenger?</span>}<div>
+            {id!=-1&&<div><span>Continue booking flight {id} from {depart} to {arrive} for {auth.Passengers}</span> {auth.Passengers==1&&<span> passenger?</span>}{auth.Passengers!=1&&<span> passengers?</span>}<div>
                 <Formik initialValues={{depart,arrive,departDate,flightsRemaining}} enableReinitialize = {true} onSubmit={onSubmit}>
                 <div>
                     <Form>

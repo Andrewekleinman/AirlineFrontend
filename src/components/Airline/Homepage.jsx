@@ -13,7 +13,8 @@ import UpdateComponent from './UpdateComponent'
 import PickFlight from './FlightTracker/PickFlight'
 import SearchFlights from './FlightTracker/SearchFlights'
 import UpdateFlights from './FlightTracker/UpdateFlights'
-
+import Cart from'./FlightTracker/Cart'
+import Inventory from'./FlightTracker/Inventory'
 
 export default function App(){
     return(
@@ -25,6 +26,8 @@ export default function App(){
                         <Route path='/' element={<LoginComponent/>}></Route>
                         <Route path='/login' element={<LoginComponent/>}></Route>
                         <Route path='/additional' element={<AuthenticatedRoute><AdditionalComponent/></AuthenticatedRoute>}></Route>
+                        <Route path='/cart' element={<AuthenticatedRoute><Cart/></AuthenticatedRoute>}></Route>
+                        <Route path='/inventory' element={<AuthenticatedRoute><Inventory/></AuthenticatedRoute>}></Route>
                         <Route path='/welcome' element={<AuthenticatedRoute><WelcomeComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/additional/:id' element={<AuthenticatedRoute><UpdateComponent/></AuthenticatedRoute>}></Route>
                         <Route path='/flights/:id' element={<AuthenticatedRoute><UpdateFlights/></AuthenticatedRoute>}></Route>
