@@ -5,7 +5,6 @@ import { useNavigate} from 'react-router-dom'
 export default function HeaderComponent(){
     const authContext = useAuth()
     const navigate = useNavigate()
-    console.log(authContext.username)
     
     return(
         <header className="border-bottom border-light border-5 mb-5 p-2">

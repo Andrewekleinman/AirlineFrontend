@@ -1,5 +1,6 @@
 import {useParams,useNavigate} from 'react-router-dom'
 import { alterFlight, createFlight, retrieveFlight } from '../api/FlightApiService'
+import { createBooking } from '../api/BookingApiService'
 import { useEffect,useState } from 'react'
 import { Formik,Form,Field, ErrorMessage} from 'formik'
 import { useAuth } from '../security/AuthContext'
@@ -11,6 +12,7 @@ export default function UpdateFlights(){
     const [departDate,setDepartDate] = useState('')
     const [flightsRemaining,setFlightsRemaining] = useState('')
     const [arrive,setArrive] = useState('')
+    const username = useAuth().username;
     const auth = useAuth().flightSearch;
     const navigate = useNavigate()
 
@@ -37,8 +39,9 @@ export default function UpdateFlights(){
     function goBack(){
         navigate('/search')
     }
-    function onSubmit(values){
+    async function onSubmit(values){
         const flight={depart: values.depart, arrive: values.arrive, departDate: values.departDate,returnDate: null, flightsRemaining:values.flightsRemaining}
+        const booking = {username:username,flightId:id,depart: values.depart, arrive: values.arrive, departDate: values.departDate,passengers:auth.Passengers,bookingType:"Cart"}
         if(id == -1){
             createFlight(flight).then(response=>{
                 console.log(flight)
@@ -48,10 +51,15 @@ export default function UpdateFlights(){
         }
         else{
             flight.flightsRemaining -= auth.Passengers
-        alterFlight(id, flight).then(response =>{
+        await alterFlight(id, flight).then(response =>{
             console.log(response)
-            navigate(`/search`)
+            
         })
+        createBooking(booking).then(response=>{
+            console.log(flight)
+            console.log(response)
+        })
+        navigate(`/search`)
     }
      
     }
