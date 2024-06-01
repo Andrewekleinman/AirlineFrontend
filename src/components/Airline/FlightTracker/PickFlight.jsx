@@ -1,5 +1,4 @@
-import {useParams,useNavigate} from 'react-router-dom'
-import { useEffect,useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import { Formik,Form,Field, ErrorMessage } from 'formik'
 import { useAuth } from '../security/AuthContext'
 import moment from 'moment'
@@ -9,7 +8,6 @@ import './PickFlight.css'
 export default function PickFlight(){
     const today = moment().add(1,'d').format('yyyy-MM-DD');
     const later = moment().add(5,'d').format('yyyy-MM-DD');
-    const [round,setRound] = useState(true)
     const navigate = useNavigate()
     const auth = useAuth()
 
@@ -22,15 +20,13 @@ export default function PickFlight(){
     }
     function validate(values){
         let errors = {}
-        if(values.Depart.length!=3||values.Arrive.length!=3)
+        if(values.Depart.length!==3||values.Arrive.length!==3)
             errors.Depart='invalid airport'
         if(!moment(values.DepartDate).isValid()|| !moment(values.ReturnDate).isValid() || values.ReturnDate<values.DepartDate)
             errors.DepartDate='invalid dates'
         return errors
     }
-    function update(roundVal){
-        setRound(roundVal)
-    }
+
 
     return(
         <div className="container">
@@ -75,12 +71,12 @@ export default function PickFlight(){
                             <table><tbody>
                                 <tr>
                                     <th>Depart Date</th>
-                                    {props.values.yes == "true" && <th>Return Date</th>}
+                                    {props.values.yes === "true" && <th>Return Date</th>}
                
                                 </tr>
                                 <tr>
                                     <td><Field type="date" name="DepartDate" /></td>
-                                    {props.values.yes == "true" && <td><Field type="date" name="ReturnDate" /></td>}
+                                    {props.values.yes === "true" && <td><Field type="date" name="ReturnDate" /></td>}
   
                                 </tr>
                                 

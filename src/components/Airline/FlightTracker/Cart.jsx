@@ -2,7 +2,7 @@
 import { retrieveBookings } from '../api/BookingApiService';
 import { useAuth } from '../security/AuthContext';
 import { useEffect, useState } from 'react'
-import {useParams,useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { deleteBooking } from '../api/BookingApiService';
 
 
@@ -10,8 +10,6 @@ export default function Cart(){
     const auth = useAuth();
     const [bookings, setBookings] = useState([]);
     const navigate = useNavigate()
-    const refresh = useEffect ( () => refreshCart,[] )
-
     function refreshCart(){
         retrieveBookings(auth.username, "Cart")
             .then(response => {

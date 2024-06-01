@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { deleteFlight, retrieveFlight,retrieveFlights } from '../api/FlightApiService';
-import UpdateComponent from '../UpdateComponent';
+import { retrieveFlights } from '../api/FlightApiService';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../security/AuthContext';
 import './SearchFlights.css';
@@ -26,14 +25,14 @@ export default function SearchFlights(){
         }
         useEffect ( () => refreshFlights,[] )
 
-    function deleteElement(id){
-        deleteFlight(useAuth.username, id)
-            // .then(()=>{
-            //     // setMessage(`Delete of todo with id= ${id} successful`) 
-            //     // refreshTodos()
-            // })
-            // .catch(()=>console.log(`Tried to delete ${useAuth.username}, ${id} but failed`))
-    }
+    // function deleteElement(id){
+    //     deleteFlight(useAuth.username, id)
+    //         // .then(()=>{
+    //         //     // setMessage(`Delete of todo with id= ${id} successful`) 
+    //         //     // refreshTodos()
+    //         // })
+    //         // .catch(()=>console.log(`Tried to delete ${useAuth.username}, ${id} but failed`))
+    // }
     function updateElement(id){    
            
         navigate(`/flights/${id}`)
@@ -45,8 +44,8 @@ export default function SearchFlights(){
     return(
         
     <div className="Container">
-        {auth.roundTrip == "true" &&<div className='informative'>Select your initial flight</div>}
-        {auth.roundTrip != "true" &&<div className='informative'>Select your flight</div>}
+        {auth.roundTrip === "true" &&<div className='informative'>Select your initial flight</div>}
+        {auth.roundTrip !== "true" &&<div className='informative'>Select your flight</div>}
 
         <table className='center'>
         <tbody>
@@ -74,7 +73,7 @@ export default function SearchFlights(){
                     )} 
                     </tbody>
                     </table>
-                   {auth.roundTrip == "true" &&<span>
+                   {auth.roundTrip === "true" &&<span>
                     <div className='informative'>Book your return trip</div>
                     <table className='center'><tbody>
                     <tr>
@@ -99,7 +98,7 @@ export default function SearchFlights(){
                     )}    
             </tbody>
         </table></span>}
-        {username == 'testusername' && <div className='btn btn-success m-3' onClick={() => createElement()}>Add new</div>}
+        {username === 'testusername' && <div className='btn btn-success m-3' onClick={() => createElement()}>Add new</div>}
     </div>
     )
 }
