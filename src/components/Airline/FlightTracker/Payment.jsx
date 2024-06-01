@@ -4,7 +4,6 @@ import { useAuth } from '../security/AuthContext'
 import './Payment.css'
 import { purchase } from '../api/BookingApiService';
 
-
 export default function Payment(){
     const username = useAuth().username;
     const navigate = useNavigate();
@@ -19,13 +18,13 @@ export default function Payment(){
 
 
     return(
-        <div><Formik initialValues={{CreditCard: "0000-0000-0000-0000",ExpirationDate: "06/28", CVV: "123"}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
+        <div className='background'><Formik initialValues={{CreditCard: "0000-0000-0000-0000",ExpirationDate: "06/28", CVV: "123"}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
         {
             (props) => (
                 <Form>
                     <ErrorMessage name="Depart" component="div" className='alert alert-warning'/>
                     <ErrorMessage name="DepartDate" component="div" className='alert alert-warning'/>
-                    <div className='Row m-5'>
+                    <div  className='notOpaque'>
                     
                     <table className='center'><tbody>
                         <tr>

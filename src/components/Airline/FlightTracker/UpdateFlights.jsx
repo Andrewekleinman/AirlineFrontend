@@ -16,12 +16,12 @@ export default function UpdateFlights(){
     const navigate = useNavigate()
 
     useEffect(
-        ()=>(retrieveInfo()),
+        ()=>retrieveInfo,
         [id]
     )
 
     function retrieveInfo(){
-        if(id !== -1){
+        if(id != -1){
             retrieveFlight(id)
             .then(
                 response=> {
@@ -41,7 +41,7 @@ export default function UpdateFlights(){
     async function onSubmit(values){
         const flight={depart: values.depart, arrive: values.arrive, departDate: values.departDate,returnDate: null, flightsRemaining:values.flightsRemaining}
         const booking = {username:username,flightId:id,depart: values.depart, arrive: values.arrive, departDate: values.departDate,passengers:auth.Passengers,bookingType:"Cart"}
-        if(id === -1){
+        if(id == -1){
             createFlight(flight).then(response=>{
                 console.log(flight)
                 console.log(response)
@@ -73,8 +73,8 @@ export default function UpdateFlights(){
 
     return(
         <div className="container">
-            {id===-1 && <h1>Enter details</h1>}
-            {id === -1 &&<div>
+            {id==-1 && <h1>Enter details</h1>}
+            {id == -1 &&<div>
                 <Formik initialValues={{depart,arrive,departDate,flightsRemaining}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
                 {
                     (props) => (
@@ -105,7 +105,7 @@ export default function UpdateFlights(){
                 }
                 </Formik>
             </div>}
-            {id!==-1&&<div><span>Continue booking flight {id} from {depart} to {arrive} for {auth.Passengers}</span> {auth.Passengers===1&&<span> passenger?</span>}{auth.Passengers!==1&&<span> passengers?</span>}<div>
+            {id!=-1&&<div><span>Continue booking flight {id} from {depart} to {arrive} for {auth.Passengers}</span> {auth.Passengers==1&&<span> passenger?</span>}{auth.Passengers!=1&&<span> passengers?</span>}<div>
                 <Formik initialValues={{depart,arrive,departDate,flightsRemaining}} enableReinitialize = {true} onSubmit={onSubmit}>
                 <div>
                     <Form>
