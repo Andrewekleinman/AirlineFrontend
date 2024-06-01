@@ -18,7 +18,7 @@ export default function Payment(){
 
 
     return(
-        <div className='background'><Formik initialValues={{CreditCard: "0000-0000-0000-0000",ExpirationDate: "06/28", CVV: "123"}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
+        <div className='background' ><Formik initialValues={{CreditCard: "0000-0000-0000-0000",ExpirationDate: "06/28", CVV: "123"}} enableReinitialize = {true} onSubmit={onSubmit} validate={validate} validateOnBlur={false} validateOnChange={false}>
         {
             (props) => (
                 <Form>

@@ -13,7 +13,8 @@
     background-size: contain;
     background-position:top;
     background: cover;
-    height: 100%;
+  
+
     background-color: rgba(180,255,255,.7);
     background-blend-mode: lighten;
 }
