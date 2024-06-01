@@ -42,10 +42,10 @@ export default function Payment(){
                     <table className='center'><tbody>
                         <tr>
                   
-                            <th>CVV</th><th>Expiration date</th>
+                            <th>Expiration date</th><th>CVV</th>
                         </tr>
                         <tr>
-                            <td><Field type="password" name="CVV" /></td><td><Field type="text" name="ExpirationDate" /></td>
+                            <td><Field type="text" name="ExpirationDate" /></td><td><Field type="password" name="CVV" /></td>
                         </tr>
                     </tbody></table>
                     </div>              
