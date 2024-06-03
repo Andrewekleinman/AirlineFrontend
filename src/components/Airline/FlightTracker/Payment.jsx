@@ -24,7 +24,7 @@ export default function Payment(){
                 <Form>
                     <ErrorMessage name="Depart" component="div" className='alert alert-warning'/>
                     <ErrorMessage name="DepartDate" component="div" className='alert alert-warning'/>
-                    <div  className='notOpaque'>
+                    <div>
                     
                     <table className='center'><tbody>
                         <tr>

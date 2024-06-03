@@ -13,11 +13,6 @@
     background-size: contain;
     background-position:top;
     background: cover;
-  
-
     background-color: rgba(180,255,255,.7);
     background-blend-mode: lighten;
-}
-.notOpaque{
-    opacity: 1;
 }
