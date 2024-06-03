@@ -29,7 +29,7 @@ export default function Inventory(){
             
             {bookings.map(
                         element => (
-                            <tr key={element.id}>
+                            <tr key={element.bookingId}>
                                 <td>{element.depart}</td>
                                <td>{element.arrive}</td>
                                <td>{element.departDate.toString()}</td>
