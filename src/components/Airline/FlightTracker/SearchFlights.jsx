@@ -54,6 +54,8 @@ export default function SearchFlights(){
                 <th>Arrival</th>
                 <td>Date</td>
                 <td>Seats Remaining</td>
+                <td>duration</td>
+                <td>price</td>
                 {/* <td>Seats</td> */}
             </tr>
             
@@ -65,6 +67,8 @@ export default function SearchFlights(){
                                {element.flightsRemaining>=auth.Passengers&&<td>{element.departDate.toString()}</td>}
                                 {/* <td>{element.returnDate.toString()}</td> */}
                                 {element.flightsRemaining>=auth.Passengers&& <td>{element.flightsRemaining}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td>{element.departTime} - {element.arriveTime}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td>${element.price}</td>}
                                 {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
                                 {element.flightsRemaining>=auth.Passengers&& element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
                                 
@@ -81,6 +85,8 @@ export default function SearchFlights(){
                 <th>Arrival</th>
                 <td>Date</td>
                 <td>Seats Remaining</td>
+                <td>duration</td>
+                <td>price</td>
                 {/* <td>Seats</td> */}
             </tr>
                     {auth.ReturnDate != null && returnFlights.map(
@@ -91,6 +97,8 @@ export default function SearchFlights(){
                                 {element.flightsRemaining>=auth.Passengers&& <td>{element.departDate.toString()}</td>}
                                 {/* <td>{element.returnDate.toString()}</td> */}
                                 {element.flightsRemaining>=auth.Passengers&&<td>{element.flightsRemaining}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td>{element.departTime} - {element.arriveTime}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td>${element.price}</td>}
                                 {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
                                 {element.flightsRemaining>=auth.Passengers&&element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
                             </tr>

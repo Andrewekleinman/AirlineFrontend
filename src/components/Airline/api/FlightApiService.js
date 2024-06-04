@@ -4,7 +4,6 @@ import { apiClient } from "./ApiClient"
 
 const username = useAuth.username
 export function retrieveFlights(depart, arrive, departDate){
-    console.log(depart, arrive, departDate.toString());
     return apiClient.get(`/flights/${depart}/${arrive}/${departDate}/test`)
 }
 export function deleteFlight(id){

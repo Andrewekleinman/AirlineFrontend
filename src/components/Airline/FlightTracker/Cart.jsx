@@ -45,6 +45,8 @@ export default function Cart(){
                                <td>{element.departDate.toString()}</td>
                                 {/* <td>{element.returnDate.toString()}</td> */}
                                 <td>{element.passengers}</td>
+                               <td>{element.departTime} - {element.arriveTime}</td>
+                                <td>${element.price}</td>
                                 <td><button className='btn btn-warning' onClick={() => deleteElement(element.bookingId)}>delete</button></td>
                                 
                                 
