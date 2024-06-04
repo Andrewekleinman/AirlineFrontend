@@ -47,30 +47,30 @@ export default function SearchFlights(){
         {auth.roundTrip == "true" &&<div className='informative'>Select your initial flight</div>}
         {auth.roundTrip != "true" &&<div className='informative'>Select your flight</div>}
 
-        <table className='center'>
+        <table className='center tableFormat bordered'>
         <tbody>
             <tr>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <td>Date</td>
-                <td>Seats Remaining</td>
-                <td>duration</td>
-                <td>price</td>
-                {/* <td>Seats</td> */}
+                <th className='tableFormat'>Departure</th>
+                <th className='tableFormat'>Arrival</th>
+                <td className='tableFormat'>Date</td>
+                <td className='tableFormat'>Seats Remaining</td>
+                <td className='tableFormat'>Duration</td>
+                <td className='tableFormat'>Price</td>
+                {/* <td className='tableFormat'>Seats</td> */}
             </tr>
             
             {flights.map(
                         element => (
                             <tr key={element.id}>
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.depart}</td>}
-                               {element.flightsRemaining>=auth.Passengers&& <td>{element.arrive}</td>}
-                               {element.flightsRemaining>=auth.Passengers&&<td>{element.departDate.toString()}</td>}
-                                {/* <td>{element.returnDate.toString()}</td> */}
-                                {element.flightsRemaining>=auth.Passengers&& <td>{element.flightsRemaining}</td>}
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.departTime} - {element.arriveTime}</td>}
-                                {element.flightsRemaining>=auth.Passengers&&<td>${element.price}</td>}
-                                {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
-                                {element.flightsRemaining>=auth.Passengers&& element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.depart}</td>}
+                               {element.flightsRemaining>=auth.Passengers&& <td className='tableFormat'>{element.arrive}</td>}
+                               {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.departDate.toString()}</td>}
+                                {/* <td className='tableFormat'>{element.returnDate.toString()}</td> */}
+                                {element.flightsRemaining>=auth.Passengers&& <td className='tableFormat'>{element.flightsRemaining}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.departTime} - {element.arriveTime}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>${element.price}</td>}
+                                {/* <td className='tableFormat'><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
+                                {element.flightsRemaining>=auth.Passengers&& element.flightsRemaining>0&&<td className='tableFormat'><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
                                 
                             </tr>
                         )
@@ -79,28 +79,28 @@ export default function SearchFlights(){
                     </table>
                    {auth.roundTrip == "true" &&<span>
                     <div className='informative'>Book your return trip</div>
-                    <table className='center'><tbody>
+                    <table className='center bordered'><tbody>
                     <tr>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <td>Date</td>
-                <td>Seats Remaining</td>
-                <td>duration</td>
-                <td>price</td>
-                {/* <td>Seats</td> */}
+                <th className='tableFormat'>Departure</th>
+                <th className='tableFormat'>Arrival</th>
+                <td className='tableFormat'>Date</td>
+                <td className='tableFormat'>Seats Remaining</td>
+                <td className='tableFormat'>Duration</td>
+                <td className='tableFormat'>Price</td>
+                {/* <td className='tableFormat'>Seats</td> */}
             </tr>
                     {auth.ReturnDate != null && returnFlights.map(
                         element => (
                             <tr key={element.id}>
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.depart}</td>}
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.arrive}</td>}
-                                {element.flightsRemaining>=auth.Passengers&& <td>{element.departDate.toString()}</td>}
-                                {/* <td>{element.returnDate.toString()}</td> */}
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.flightsRemaining}</td>}
-                                {element.flightsRemaining>=auth.Passengers&&<td>{element.departTime} - {element.arriveTime}</td>}
-                                {element.flightsRemaining>=auth.Passengers&&<td>${element.price}</td>}
-                                {/* <td><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
-                                {element.flightsRemaining>=auth.Passengers&&element.flightsRemaining>0&&<td><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.depart}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.arrive}</td>}
+                                {element.flightsRemaining>=auth.Passengers&& <td className='tableFormat'>{element.departDate.toString()}</td>}
+                                {/* <td className='tableFormat'>{element.returnDate.toString()}</td> */}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.flightsRemaining}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>{element.departTime} - {element.arriveTime}</td>}
+                                {element.flightsRemaining>=auth.Passengers&&<td className='tableFormat'>${element.price}</td>}
+                                {/* <td className='tableFormat'><button className='btn btn-warning' onClick={() => deleteElement(element.id)}>delete</button></td> */}
+                                {element.flightsRemaining>=auth.Passengers&&element.flightsRemaining>0&&<td className='tableFormat'><button className='btn btn-success' onClick={() => updateElement(element.id)}>book flight</button></td>}
                             </tr>
                         )
                     )}    

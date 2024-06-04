@@ -22,3 +22,11 @@
 
     padding: 0px;
   }
+ th,td{
+    padding: 0px;
+    text-align: left;
+    border: 2px solid;
+  }
+  table{
+    border: 0px solid;
+  }

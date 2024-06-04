@@ -57,10 +57,10 @@ export default function UpdateFlights(){
         else{
             flight.flightsRemaining -= auth.Passengers
             console.log("departtime: " + values.departTime)
-        await alterFlight(id, flight).then(response =>{
-            console.log(response)
+        // await alterFlight(id, flight).then(response =>{
+        //     console.log(response)
             
-        })
+        // })
         createBooking(booking).then(response=>{
             console.log(flight)
             console.log(response)

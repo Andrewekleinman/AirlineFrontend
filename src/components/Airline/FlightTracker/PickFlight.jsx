@@ -68,7 +68,7 @@ export default function PickFlight(){
                             </div>              
                              
                             <div className="column2">
-                            <table><tbody>
+                            <table className='noFormat'><tbody>
                                 <tr>
                                     <th>Depart Date</th>
                                     {props.values.yes === "true" && <th>Return Date</th>}

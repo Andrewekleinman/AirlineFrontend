@@ -10,4 +10,14 @@ label,input,button{
 .center{
     margin-left: auto;
     margin-right: auto;
+    border:1px solid;
 }
+
+ .tableFormat {
+    padding: 15px;
+    text-align: center;
+    /* border: 1px solid; */
+  }
+  .bordered{
+    border: 1px solid;
+  }
