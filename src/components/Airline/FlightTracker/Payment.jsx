@@ -3,6 +3,7 @@ import { Formik,Form,Field, ErrorMessage } from 'formik'
 import { useAuth } from '../security/AuthContext'
 import './Payment.css'
 import { purchase } from '../api/BookingApiService';
+import moment from 'moment'
 
 export default function Payment(){
     const username = useAuth().username;
@@ -12,8 +13,16 @@ export default function Payment(){
         await purchase(username)
         navigate('/Inventory');
     }
-    function validate(){
-    
+    function validate(values){
+        let errors = {}
+        let expDate = moment(new Date(), "MM/YY")
+        expDate = values.ExpirationDate
+        if(values.CVV.length!==3)
+            errors.CVV='invalid credit card numbers'
+        
+        if(moment(expDate).isBefore(moment()))
+            errors.ExpirationDate='invalid dates'
+        return errors
     }
 
 
@@ -22,8 +31,8 @@ export default function Payment(){
         {
             (props) => (
                 <Form>
-                    <ErrorMessage name="Depart" component="div" className='alert alert-warning'/>
-                    <ErrorMessage name="DepartDate" component="div" className='alert alert-warning'/>
+                    <ErrorMessage name="CVV" component="div" className='alert alert-warning'/>
+                    <ErrorMessage name="ExpirationDate" component="div" className='alert alert-warning'/>
                     <div>
                     
                     <table className='center'><tbody>
