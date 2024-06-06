@@ -44,8 +44,8 @@ export default function Inventory(){
                             </tr>
                         )
                     )} 
-                    </tbody>
-                    </table>
-                    </div>
+        </tbody>
+        </table>
+    </div>
 )
 }

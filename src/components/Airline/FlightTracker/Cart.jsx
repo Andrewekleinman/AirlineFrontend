@@ -54,9 +54,9 @@ export default function Cart(){
                             </tr>
                         )
                     )} 
-                    </tbody>
-                    </table>
-                    <button className='btn btn-success' onClick={() => purchase()}>Purchase flights</button>
-                    </div>
-)
+        </tbody>
+    </table>
+    <button className='btn btn-success' onClick={() => purchase()}>Purchase flights</button>
+    </div>
+    )
 }
