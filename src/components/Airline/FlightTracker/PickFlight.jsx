@@ -55,8 +55,8 @@ export default function PickFlight(){
                             <div className="column">
                             <table><tbody>
                                 <tr>
-                                  <th></th>
-                                  <th></th>
+                                    <th></th>
+                                    <th></th>
                                     <th>Passengers</th>
                                 </tr>
                                 <tr>
